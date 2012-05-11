@@ -34,7 +34,7 @@ The resulting file looks something like this:
 
 Place the file, called users.csv, into the same directory as this script, and then:
 
-    generate-cloudtrax-vouchers.php
+    php generate-cloudtrax-vouchers.php
 
 The result should be, when you login to your Cloudtrax.com voucher page, new vouchers
 created for every user.
@@ -42,5 +42,5 @@ created for every user.
 Credits
 -------
 
-[Peter Rukavina, Reinvented Inc.](http://ruk.ca/)
-[Prince Street Home and School](http://princestreetschool.ca/teachernet)
+* [Peter Rukavina, Reinvented Inc.](http://ruk.ca/)
+* [Prince Street Home and School](http://princestreetschool.ca/teachernet)
