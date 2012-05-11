@@ -29,8 +29,8 @@ Create comma-delimited ASCII file with five columns:
 The resulting file looks something like this:
 
     Harry Vlenson,8B,Yes,236,vlenson236
-Fred Wiley,9A,Yes,281,wiley281
-Sven Boshane,5B,Yes,778,boshane778
+    Fred Wiley,9A,Yes,281,wiley281
+    Sven Boshane,5B,Yes,778,boshane778
 
 Place the file, called users.csv, into the same directory as this script, and then:
 
