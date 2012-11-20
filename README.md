@@ -1,3 +1,25 @@
+Download CloudTrax Usage Data
+=============================
+
+The [CloudTrax.com Open-Mesh access point manager](http://cloudtrax.com) provides usage data for access points in a network.
+
+There is, however, now way to find historical data -- only the last 24 hours is provided. To allow for the archiving of data,
+the **archive-usage-data.php** script will scrape this data out of Cloudtrax.com and dump it into a tab-delimited ASCII file
+where you can then manipulate it further.
+
+Requirements
+------------
+
+* PHP 5.x (with DOM module)
+* cURL
+
+Usage
+-----
+
+Paste your Cloudtrax.com login information and network name into the script, and set the file where you would like log output, then:
+
+    php archive-usage-data.php
+
 Download CloudTrax Graphs
 =========================
 
