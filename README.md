@@ -1,3 +1,23 @@
+Download CloudTrax Graphs
+=========================
+
+The [CloudTrax.com Open-Mesh access point manager](http://cloudtrax.com) provides graphs of bandwidth usage and active users.
+
+To include these graphs in other websites requires an automated process to download them, which is what the script download-graphs.php will do.
+
+Requirements
+------------
+
+* PHP 5.x
+* cURL
+
+Usage
+-----
+
+Paste your Cloudtrax.com login information and network name into the script, and set the directory where you would like graphs output, then:
+
+    php download-graphs.php
+
 Generate CloudTrax Vouchers
 ===========================
 
