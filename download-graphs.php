@@ -39,12 +39,7 @@ $network  = "";
 $graph_width = 640;
 
 // An array holding the label and number of hours for each graph you want to download
-$graphs = array(
-						"month" => 744,
-						"week" => 168,
-						"day" => 24,
-						"8hours" => 8,
-						"lasthour" => 1);
+$graphs = array("month" => 744,"week" => 168,"day" => 24,"8hours" => 8,"lasthour" => 1);
 						
 // Directory into which graphs should be saved (include trailing slash)
 $graph_dir = "/tmp/graphs/";
