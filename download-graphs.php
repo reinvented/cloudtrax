@@ -65,14 +65,14 @@ foreach($graphs as $label => $hours) {
 	curl_setopt($ch,CURLOPT_COOKIEJAR,"/tmp/cloudtrax-cookies.txt");
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER,TRUE);
 	$html = curl_exec($ch);
-  curl_close($ch); 
+	curl_close($ch); 
 	preg_match("/src=\"(getchart\.php\?img=chart1&id=.*&)\"/", $html, $matches);
 	$ch = curl_init("$cloudtrax_base" . $matches[1]);
 	curl_setopt($ch,CURLOPT_COOKIEFILE,"/tmp/cloudtrax-cookies.txt");
 	curl_setopt($ch,CURLOPT_COOKIEJAR,"/tmp/cloudtrax-cookies.txt");
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER,TRUE);
 	$png = curl_exec($ch);
-  curl_close($ch); 
+	curl_close($ch); 
 	$fp = fopen("$graph_dir$label.png","w");
 	fwrite($fp,$png);
 	fclose($fp);
