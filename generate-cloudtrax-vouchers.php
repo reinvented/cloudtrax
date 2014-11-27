@@ -18,7 +18,7 @@
   * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
   * USA
   *
-  * @version 0.1, May 11, 2012
+  * @version 0.2, November 27, 2014
   * @link http://princestreetschool.ca/content/bulk-generation-cloudtraxcom-vouchers Documentation
   * @author Peter Rukavina <peter@rukavina.net>
   * @copyright Copyright &copy; 2012, Prince Street Home and School
@@ -48,7 +48,7 @@ $voucherurl = "https://lobby.cloudtrax.com/vouchers/vouchers2.php";
   * This has the effect of saving a PHP session ID cookie, which is
   * later sent *back* to authenticate future requests.
   */
-exec("curl -s -L -e https://lobby.cloudtrax.com/lobby.php -c /tmp/cloudtrax-lobby-cookies.txt -X POST -d 'account=" . urlencode($username) . "&password=" . urlencode($password) ."&edit=Login' $loginurl");
+exec("curl -s -L 'https://lobby.cloudtrax.com/app/api/lobby_login.php' -H 'Host: lobby.cloudtrax.com' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:34.0) Gecko/20100101 Firefox/34.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'DNT: 1' -H 'Referer: https://lobby.cloudtrax.com/lobby.php'  -c /tmp/cloudtrax-lobby-cookies.txt -H 'Connection: keep-alive' --data 'account=" . urlencode($username) . "&password=" . urlencode($password) ."&edit=Login'");
 
 /**
   * Loop through the CSV file of users, which needs to have the
@@ -64,7 +64,7 @@ while(!feof($fp)) {
 	list($name,$class,$access,$random,$voucher) = explode(",",trim(fgets($fp,4096)));
 	if ($access == "Yes") {
 		print $name . "\n";
-		passthru("curl -s -o output.txt -e https://lobby.cloudtrax.com/vouchers/edit_vouchers.php -c /tmp/cloudtrax-lobby-cookies.txt -b /tmp/cloudtrax-lobby-cookies.txt -X POST -d 'submit=Create+Vouchers&voucher_code=" . urlencode($voucher) . "&comment=" . urlencode($name . " / " . $class) ."&duration=$duration&max_users=$maxusers&downValue=$down&upValue=$up&valid=Hours+Valid&login=Login+Code&border=1&logo=1' $voucherurl");
+        passthru("curl -s '$voucherurl' -H 'Host: lobby.cloudtrax.com' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:34.0) Gecko/20100101 Firefox/34.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' -H 'DNT: 1' -H 'Referer: https://lobby.cloudtrax.com/vouchers/vouchers2.php' -H 'Connection: keep-alive' -c /tmp/cloudtrax-lobby-cookies.txt -b /tmp/cloudtrax-lobby-cookies.txt --data 'submit=Create+Vouchers&voucher_code=" . urlencode($voucher) . "&comment=" . urlencode($name . " / " . $class) ."&duration=$duration&max_users=$maxusers&downValue=$down&upValue=$up&valid=Hours+Valid&login=Login+Code&border=1&logo=1'");
 	}
 }
 
